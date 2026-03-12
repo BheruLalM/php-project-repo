@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('evidences', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('crime_record_id')
+                  ->constrained('crime_records')
+                  ->cascadeOnDelete();
+
+            $table->string('file_path');
+            $table->enum('file_type', ['image', 'pdf', 'other']);
+            $table->string('original_name');
+            $table->text('description')->nullable();
+
+            $table->foreignId('uploaded_by')
+                  ->nullable()
+                  ->constrained('users')
+                  ->nullOnDelete();
+
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('evidences');
+    }
+};
