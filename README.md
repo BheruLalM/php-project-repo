@@ -3,7 +3,7 @@
 - Project Name: Crime Record Management System (CRMS)
 - GitHub Repo: https://github.com/BheruLalM/php-project-repo
 - Stack: Laravel 12, PHP 8.2, MySQL
-- Deployed on: Railway
+
 
 ## Test Credentials
 | Role    | Email            | Password    |
